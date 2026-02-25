@@ -13,14 +13,8 @@
         <!-- Basic info !-->
         <label>Name:<input type="text" name="name"></label>
         <label>Email:<input type="email" name="email"></label>
+        <label>Website:<input type="url" name="website"></label>
         <label>Bio:<textarea name="bio"></textarea></label>
-
-        <!-- Artwork !-->
-        <fieldset>
-            <legend>Artwork</legend>
-            <label>Title: <input type="text" name="artwork-title"></label>
-            <label>Year: <input type="number" name="artwork-year"></label>
-        </fieldset>
 
         <!-- Mediums !-->
         <fieldset>
@@ -30,8 +24,52 @@
             <label><input type="checkbox" name="mediums" value="sculpture">Sculpture</label>
             <label><input type="checkbox" name="mediums" value="photography">Photography</label>
         </fieldset>
-        <button type="submit">Submit</button>
-    </form>
 
+        <!-- Selected Artworks !-->
+        <fieldset id="artwork-section">
+            <legend>Selected Artworks</legend>
+            <div class="artwork-item">
+                <label>Title:
+                    <input type="text" name="artwork-title[]">
+                </label>
+                <label>Year:
+                    <input type="number" name="artwork-year[]">
+                </label>
+                <label>Image:
+                    <input type="file" name="artwork-image[]" accept="image/*">
+                </label>
+            </div>
+            <button type="button" id="add-artwork">Add Another Artwork</button>
+            </fieldset>
+
+        <!-- Current Exhibitons !-->  
+        <fieldset id="exhibition-section">
+        <legend>Current Exhibitions</legend>
+        <div class="exhibition-item">
+            <label>Title:
+                <input type="text" name="exhibition-title[]">
+            </label>
+
+            <label>Venue:
+                <input type="text" name="exhibition-venue[]">
+            </label>
+
+            <label>Start Date:
+                <input type="date" name="exhibition-start[]">
+            </label>
+
+            <label>End Date:
+                <input type="date" name="exhibition-end[]">
+            </label>
+        </div>
+
+    <button type="button" id="add-exhibition">
+        Add Another Exhibition
+    </button>
+    </fieldset>
+
+    <button type="submit">Submit</button>
+    </form>
+<script src="ssr.js"></script>
 </body>
 </html>

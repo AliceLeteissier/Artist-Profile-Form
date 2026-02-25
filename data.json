@@ -1,12 +1,23 @@
 {
-    "basic": [
-        {"label": "Name:", "type": "text", "name": "name"},
-        {"label": "Email:", "type": "text", "name": "email"},
-        {"label": "Bio:", "type": "textarea", "name": "bio"}
-    ],
-    "artwork": [
-        {"label": "Title", "type": "text", "name": "artwork-title"},
-        {"label": "Year", "type": "number", "name": "artwork-year"}
-    ],
-    "medium": ["installation", "painting", "sculpture", "photography"]
+  "basic": [
+    { "label": "Name:", "type": "text", "name": "name" },
+    { "label": "Email:", "type": "email", "name": "email" },
+    { "label": "Website:", "type": "url", "name": "website" },
+    { "label": "Bio:", "type": "textarea", "name": "bio" }
+  ],
+
+  "medium": ["installation", "painting", "sculpture", "photography"],
+
+  "artwork": [
+    { "label": "Title", "type": "text", "name": "artwork-title[]" },
+    { "label": "Year", "type": "number", "name": "artwork-year[]" },
+    { "label": "Image", "type": "file", "name": "artwork-image[]", "accept": "image/*" }
+  ],
+
+  "exhibition": [
+    { "label": "Title", "type": "text", "name": "exhibition-title[]" },
+    { "label": "Venue", "type": "text", "name": "exhibition-venue[]" },
+    { "label": "Start Date", "type": "date", "name": "exhibition-start[]" },
+    { "label": "End Date", "type": "date", "name": "exhibition-end[]" }
+  ]
 }
