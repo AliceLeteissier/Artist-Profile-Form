@@ -1,0 +1,12 @@
+{
+    "basic": [
+        {"label": "Name:", "type": "text", "name": "name"},
+        {"label": "Email:", "type": "text", "name": "email"},
+        {"label": "Bio:", "type": "textarea", "name": "bio"}
+    ],
+    "artwork": [
+        {"label": "Title", "type": "text", "name": "artwork-title"},
+        {"label": "Year", "type": "number", "name": "artwork-year"}
+    ],
+    "medium": ["installation", "painting", "sculpture", "photography"]
+}

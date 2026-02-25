@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSR Artist Profile Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Artist Profile Form</h1>
+    
+    <form id="artist-form">
+        <!-- Basic info !-->
+        <label>Name:<input type="text" name="name"></label>
+        <label>Email:<input type="email" name="email"></label>
+        <label>Bio:<textarea name="bio"></textarea></label>
+
+        <!-- Artwork !-->
+        <fieldset>
+            <legend>Artwork</legend>
+            <label>Title: <input type="text" name="artwork-title"></label>
+            <label>Year: <input type="number" name="artwork-year"></label>
+        </fieldset>
+
+        <!-- Mediums !-->
+        <fieldset>
+            <legend>Medium</legend>
+            <label><input type="checkbox" name="mediums" value="installation">Installation</label>
+            <label><input type="checkbox" name="mediums" value="painting">Painting</label>
+            <label><input type="checkbox" name="mediums" value="sculpture">Sculpture</label>
+            <label><input type="checkbox" name="mediums" value="photography">Photography</label>
+        </fieldset>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
