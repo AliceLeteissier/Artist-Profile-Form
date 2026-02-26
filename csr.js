@@ -7,6 +7,10 @@ fetch('data.json')
     let formHTML = '<form id="artist-form">';
 
     // ---------------- BASIC INFO ----------------
+    formHTML += `
+      <fieldset>
+        <legend>Basic Information</legend>`;
+
     data.basic.forEach(field => {
       if (field.type === 'textarea') {
         formHTML += `
@@ -24,25 +28,43 @@ fetch('data.json')
         `;
       }
     });
+      formHTML += `
+      </fieldset>
+    `;
 
-    // ---------------- MEDIUM ----------------
-    formHTML += '<fieldset><legend>Medium</legend>';
+    // ---------------- MEDIUM (CARD GRID STYLE) ----------------
+    formHTML += `
+      <fieldset>
+        <legend>Medium</legend>
+        <div class="medium-grid">
+    `;
 
     data.medium.forEach(medium => {
       formHTML += `
-        <label>
+        <label class="medium-card">
           <input type="checkbox" name="mediums" value="${medium}">
-          ${medium.charAt(0).toUpperCase() + medium.slice(1)}
+          <span>${medium.charAt(0).toUpperCase() + medium.slice(1)}</span>
         </label>
       `;
     });
 
-    formHTML += '</fieldset>';
+    formHTML += `
+        </div>
+      </fieldset>
+    `;
 
     // ---------------- ARTWORK ----------------
-    formHTML += '<fieldset id="artwork-section">';
-    formHTML += '<legend>Selected Artworks</legend>';
-    formHTML += '<div class="artwork-item">';
+    formHTML += `
+      <fieldset id="artwork-section">
+            <legend class="legend-flex">
+                <span>Selected Artworks</span>
+                <button type="button" id="add-artwork" class="add-btn">
+                + Add Artwork
+            </button>
+            </legend>
+
+        <div class="artwork-item">
+    `;
 
     data.artwork.forEach(field => {
       if (field.type === "file") {
@@ -65,35 +87,60 @@ fetch('data.json')
       }
     });
 
-    formHTML += '</div>';
-    formHTML += '<button type="button" id="add-artwork">Add Another Artwork</button>';
-    formHTML += '</fieldset>';
-
-    // ---------------- EXHIBITIONS ----------------
-    formHTML += '<fieldset id="exhibition-section">';
-    formHTML += '<legend>Current Exhibitions</legend>';
-    formHTML += '<div class="exhibition-item">';
-
-    data.exhibition.forEach(field => {
-      formHTML += `
-        <label>
-          ${field.label}:
-          <input type="${field.type}" name="${field.name}">
-        </label>
-      `;
-    });
-
-    formHTML += '</div>';
-    formHTML += '<button type="button" id="add-exhibition">Add Another Exhibition</button>';
-    formHTML += '</fieldset>';
+    formHTML += `
+        </div>
+      </fieldset>
+    `;
 
     // ---------------- SUBMIT ----------------
-    formHTML += '<button type="submit">Submit</button>';
+    formHTML += `
+      <button class="submit" type="submit">Create Profile</button>
+    `;
+
     formHTML += '</form>';
 
     container.innerHTML = formHTML;
+
+    // ---------------- ADD ARTWORK FUNCTION ----------------
+
+    const addButton = document.getElementById("add-artwork");
+    const artworkSection = document.getElementById("artwork-section");
+
+      // Add Artwork
+
+    addButton.addEventListener("click", () => {
+      const artworkDiv = document.createElement("div");
+      artworkDiv.classList.add("artwork-item");
+
+      artworkDiv.innerHTML = `
+        <hr>
+        <label>Title:<input type="text" name="artwork-title[]"></label>
+        <label>Year:<input type="text" name="artwork-year[]" pattern="\d{4}" placeholder="YYYY"></label>
+        <label>Image:<input type="file" name="artwork-image[]" accept="image/*"></label>
+        <button type="button" class="remove-artwork">Remove</button>
+      `;
+
+      // Insert after last artwork-item
+      const lastItem = artworkSection.querySelector(".artwork-item:last-of-type");
+      lastItem.after(artworkDiv);
+  });
+
+
+      // Remove Artwork (Event Delegation)
+
+    artworkSection.addEventListener("click", (e) => {
+      if (e.target.classList.contains("remove-artwork")) {
+        const artworkDiv = e.target.closest(".artwork-item");
+      if (artworkDiv) artworkDiv.remove();
+      }
+    });
+
   })
+
   .catch(error => {
     container.innerHTML = '<p>Failed to load form data.</p>';
     console.error('Error fetching JSON:', error);
   });
+
+
+

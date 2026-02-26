@@ -1,29 +1,214 @@
+/* ---------- GLOBAL LAYOUT ---------- */
+
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
+    margin: 0;
+    padding: 40px 0;
+    background-color: #f2f4f7;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+/* ---------- LOGO ---------- */
+
+.logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+/* ---------- HEADINGS ---------- */
+
+h1 {
+    margin: 10px 0 5px 0;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+}
+
+h2 {
+    margin: 0 0 30px 0;
+    font-size: 16px;
+    font-weight: 300;
+    color: #666;
+    text-align: center;
+}
+
+/* ---------- MAIN CARD ---------- */
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    width: 66vw;              /* 2/3 of viewport width */
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
 }
+
+/* ---------- SECTION TITLES ---------- */
 
 fieldset {
-  border: 1px solid #ccc;
-  padding: 10px;
+    border: none;
+    margin: 30px 0;
+    padding: 0;
 }
 
+legend {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+/* ---------- FLEX LEGEND (for artwork section) ---------- */
+
+.legend-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 20px; /* SAME as other legends */
+    margin-bottom: 24px;
+}
+
+/* ---------- LABELS ---------- */
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+/* ---------- INPUT FIELDS ---------- */
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+
+/* ---------- MEDIUM GRID ---------- */
+
+.medium-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* ---------- MEDIUM CARD ---------- */
+
+.medium-card {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Hide default checkbox */
+.medium-card input {
+    display: none;
+}
+
+/* Card style */
+.medium-card span {
+    display: block;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    background-color: #fafafa;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+/* Hover effect */
+.medium-card span:hover {
+    background-color: #f0f0f0;
+}
+
+/* Selected state */
+.medium-card input:checked + span {
+    background-color: #111;
+    color: white;
+    border-color: #111;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.add-btn {
+    background: transparent;
+    color: #111;
+    border: 1px solid #111;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+    background: #111;
+    color: white;
+} 
+
 button {
-  padding: 8px 15px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background-color: #111;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 button:hover {
-  background-color: #45a049;
+    background-color: #333;
+}
+
+
+.submit{
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 20px;
+  width: 50%;
+  align-self: center;}
+
+.artwork-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.remove-artwork {
+    align-self: flex-end; /* works because parent is now flex */
+    background: transparent;
+    color: #111;
+    border: 1px solid #111;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+}
+
+.remove-artwork:hover {
+    background: #111;
+    color: white;
 }

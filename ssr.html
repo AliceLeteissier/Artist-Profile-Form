@@ -7,68 +7,78 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Artist Profile Form</h1>
-    
+    <img src="logo/art-in-logo.png" alt="Artit Logo" class="logo">
+    <h1>Create your Artit Profile</h1>
+    <h2>Join the Community of Artists, Gallerists and Curators</h2>
+
     <form id="artist-form">
         <!-- Basic info !-->
-        <label>Name:<input type="text" name="name"></label>
-        <label>Email:<input type="email" name="email"></label>
-        <label>Website:<input type="url" name="website"></label>
-        <label>Bio:<textarea name="bio"></textarea></label>
+        <fieldset>
+            <legend>Basic Information</legend>
+            <label>Name:<input type="text" name="name"></label>
+            <label>Email:<input type="email" name="email"></label>
+            <label>Website:<input type="url" name="website"></label>
+            <label>Bio:<textarea name="bio"></textarea></label>
+        </fieldset>
 
         <!-- Mediums !-->
-        <fieldset>
-            <legend>Medium</legend>
-            <label><input type="checkbox" name="mediums" value="installation">Installation</label>
-            <label><input type="checkbox" name="mediums" value="painting">Painting</label>
-            <label><input type="checkbox" name="mediums" value="sculpture">Sculpture</label>
-            <label><input type="checkbox" name="mediums" value="photography">Photography</label>
+    <fieldset>
+        <legend>Medium</legend>
+        <div class="medium-grid">
+            <label class="medium-card">
+                <input type="checkbox" name="mediums" value="installation">
+                <span>Installation</span>
+            </label>
+
+            <label class="medium-card">
+                <input type="checkbox" name="mediums" value="painting">
+                <span>Painting</span>
+            </label>
+
+            <label class="medium-card">
+                <input type="checkbox" name="mediums" value="sculpture">
+                <span>Sculpture</span>
+            </label>
+
+            <label class="medium-card">
+                <input type="checkbox" name="mediums" value="photography">
+                <span>Photography</span>
+            </label>
+
+            <label class="medium-card">
+                <input type="checkbox" name="mediums" value="multimedia">
+                <span>Multimedia</span>
+            </label>
+
+            <label class="medium-card">
+                <input type="checkbox" name="mediums" value="performance">
+                <span>Performance</span>
+            </label>
+        </div>
         </fieldset>
 
         <!-- Selected Artworks !-->
         <fieldset id="artwork-section">
-            <legend>Selected Artworks</legend>
+            <legend class="legend-flex">
+                <span>Selected Artworks</span>
+                <button type="button" id="add-artwork" class="add-btn">
+                + Add Artwork
+            </button>
+            </legend>
             <div class="artwork-item">
                 <label>Title:
                     <input type="text" name="artwork-title[]">
                 </label>
                 <label>Year:
-                    <input type="number" name="artwork-year[]">
+                    <input type="text" name="artwork-year[]" pattern="\d{4}" placeholder="YYYY">
                 </label>
                 <label>Image:
                     <input type="file" name="artwork-image[]" accept="image/*">
                 </label>
             </div>
-            <button type="button" id="add-artwork">Add Another Artwork</button>
             </fieldset>
 
-        <!-- Current Exhibitons !-->  
-        <fieldset id="exhibition-section">
-        <legend>Current Exhibitions</legend>
-        <div class="exhibition-item">
-            <label>Title:
-                <input type="text" name="exhibition-title[]">
-            </label>
-
-            <label>Venue:
-                <input type="text" name="exhibition-venue[]">
-            </label>
-
-            <label>Start Date:
-                <input type="date" name="exhibition-start[]">
-            </label>
-
-            <label>End Date:
-                <input type="date" name="exhibition-end[]">
-            </label>
-        </div>
-
-    <button type="button" id="add-exhibition">
-        Add Another Exhibition
-    </button>
-    </fieldset>
-
-    <button type="submit">Submit</button>
+    <button class="submit" type="submit">Create Profile</button>
     </form>
 <script src="ssr.js"></script>
 </body>
